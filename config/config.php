@@ -15,7 +15,7 @@ if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
 
 if ( !defined('BASEURL') )
-    define('BASEURL', '/sale-system/public/');
+    define('BASEURL', dirname(__FILE__, 2) . '/');
     
 if ( !defined('STYLEPATH') )
     define('STYLEPATH', dirname(__FILE__, 2) . '/public/');

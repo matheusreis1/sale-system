@@ -1,8 +1,11 @@
 <?php
 
 require_once "../../config/config.php";
+require_once BASEURL."controller/ProductController.php";
 
-$products = null;
+$productController = new ProductController();
+
+$products = $productController->products;
 
 ?>
 
@@ -42,8 +45,8 @@ $products = null;
 	<thead>
 		<tr>
 			<th>ID</th>
-			<th width="30%">Name</th>
-			<th width="30%">Price</th>
+			<th>Name</th>
+			<th>Price</th>
 			<th width="30%">Description</th>
 		</tr>
 	</thead>

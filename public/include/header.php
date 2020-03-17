@@ -27,7 +27,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="<?php echo BASEURL;?>" class="navbar-brand">Sale System</a>
+          <a href="<?php echo STYLEPATH;?>" class="navbar-brand">Sale System</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">          
@@ -37,10 +37,10 @@
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="<?php echo BASEURL;?>products">Manage Products</a></li>
-                    <li><a href="<?php echo BASEURL;?>products/add.php">New Product</a></li>
-                    <li><a href="<?php echo BASEURL;?>sellers">Manage Sellers</a></li>
-                    <li><a href="<?php echo BASEURL;?>sellers/add.php">New Seller</a></li>
+                    <li><a href="<?php echo STYLEPATH;?>products">Manage Products</a></li>
+                    <li><a href="<?php echo STYLEPATH;?>products/add.php">New Product</a></li>
+                    <li><a href="<?php echo STYLEPATH;?>sellers">Manage Sellers</a></li>
+                    <li><a href="<?php echo STYLEPATH;?>sellers/add.php">New Seller</a></li>
                 </ul>
             </li>
           </ul>
