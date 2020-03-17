@@ -23,9 +23,8 @@ class ProductController {
             $name = $_POST['product']["'name'"];
             $description = $_POST['product']["'description'"];
             $price = $_POST['product']["'price'"];
-            $created_at = date('Y-m-d H:i:s');
 
-            $product = new Product($name, $description, $price, $created_at);
+            $product = new Product($name, $description, $price);
 
             $this->database->save($product);
             header('location: index.php');

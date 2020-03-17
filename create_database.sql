@@ -6,14 +6,12 @@ CREATE TABLE product (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     description VARCHAR(100),
-    price int(11) NOT NULL,
-    created_at datetime NOT NULL
+    price int(11) NOT NULL
 );
 
 CREATE TABLE seller (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(300) NOT NULL,
-    created_at datetime NOT NULL
+    name VARCHAR(300) NOT NULL
 );
 
 CREATE TABLE sale (

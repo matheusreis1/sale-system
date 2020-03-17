@@ -48,5 +48,9 @@ class ProductSql extends PDO {
     public function save(Product $product) {
         var_dump($product);
         die;
+        $name = $product->getName();
+        $price = $product->getPrice();
+        $description = $product->getDescription();
+
     }
 }
