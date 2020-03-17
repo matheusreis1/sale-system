@@ -25,7 +25,7 @@ include(HEADER_TEMPLATE);
     </div>
 
     <div class="col-xs-6 col-sm-3 col-md-2">
-        <a href="public/products" class="btn btn-default">
+        <a href="products" class="btn btn-default">
             <div class="row">
                 <div class="col-xs-12 text-center">
                     <i class="fa fa-user fa-5x"></i>
@@ -38,7 +38,7 @@ include(HEADER_TEMPLATE);
     </div>
 
     <div class="col-xs-6 col-sm-3 col-md-2">
-        <a href="public/sellers" class="btn btn-default">
+        <a href="sellers" class="btn btn-default">
             <div class="row">
                 <div class="col-xs-12 text-center">
                     <i class="fa fa-user fa-5x"></i>
@@ -51,7 +51,7 @@ include(HEADER_TEMPLATE);
     </div>
 
     <div class="col-xs-6 col-sm-3 col-md-2">
-        <a href="public/sales" class="btn btn-default">
+        <a href="sales" class="btn btn-default">
             <div class="row">
                 <div class="col-xs-12 text-center">
                     <i class="fa fa-user fa-5x"></i>
