@@ -46,11 +46,28 @@ class ProductSql extends PDO {
     }
 
     public function save(Product $product) {
-        var_dump($product);
-        die;
         $name = $product->getName();
         $price = $product->getPrice();
         $description = $product->getDescription();
+        
+        $stmt = $this->conn->prepare(
+            "INSERT INTO ". $this->table .
+            "(name, price, description)
+            VALUES (:name, :price, :description)"
+        );
 
+        try {
+            $stmt->execute(array(
+                ":name" => $name,
+                ":price" => $price,
+                ":description" => $description,
+            ));
+    
+            $_SESSION['message'] = 'Product added.';
+            $_SESSION['type'] = 'success';
+        } catch(Exception $e) {
+            $_SESSION['message'] = 'Not possible to add the product.';
+            $_SESSION['type'] = 'danger';
+        }
     }
 }
