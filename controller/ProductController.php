@@ -20,9 +20,9 @@ class ProductController {
 
     public function add() {
         if (!empty($_POST['product'])) {
-            $name = $_POST['product']['name'];
-            $description = $_POST['product']['description'];
-            $price = $_POST['product']['price'];
+            $name = $_POST['product']["'name'"];
+            $description = $_POST['product']["'description'"];
+            $price = $_POST['product']["'price'"];
             $created_at = date('Y-m-d H:i:s');
 
             $product = new Product($name, $description, $price, $created_at);
