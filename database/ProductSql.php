@@ -71,8 +71,30 @@ class ProductSql extends PDO {
         }
     }
 
-    public function update(Product $product) {
-        var_dump($product->getId());
-        die;
+    public function update($id, $product) {
+        $name = $product["'name'"];
+        $price = $product["'price'"];
+        $description = $product["'description'"];
+
+        $stmt = $this->conn->prepare(
+            "UPDATE ". $this->table .
+            " SET name = :name, price = :price, description = :description
+            WHERE id = :id"
+        );
+
+        try {
+            $result = $stmt->execute(array(
+                ":id" => $id,
+                ":name" => $name,
+                ":price" => $price,
+                ":description" => $description
+            ));
+
+            $_SESSION['message'] = 'Product updated.';
+            $_SESSION['type'] = 'success';
+        } catch(Exception $e) {
+            $_SESSION['message'] = 'Not possible to update the product.';
+            $_SESSION['type'] = 'danger';
+        }
     }
 }

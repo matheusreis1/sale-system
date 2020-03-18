@@ -33,7 +33,20 @@ class ProductController {
     }
 
     public function edit() {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
 
+            if (isset($_POST['product'])) {
+                $product = $_POST['product'];
+
+                $this->database->update($id, $product);
+                header('location: index.php');
+            } else {
+                $this->product = $this->database->find($id);
+            }
+        } else {
+            header('location: index.php');
+        }
     }
 
     public function view($id = null) {
