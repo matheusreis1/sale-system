@@ -3,6 +3,13 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+session_start();
+
+function clear_messages() {
+    $_SESSION['message'] = "";
+    $_SESSION['type'] = "";
+}
+
 define('DB_NAME', 'sale_system');
 
 define('DB_USER', 'root');
