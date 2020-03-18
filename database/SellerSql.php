@@ -69,4 +69,27 @@ class SellerSql extends PDO {
         }
     }
 
+    public function update($id, $seller) {
+        $name = $seller["'name'"];
+
+        $stmt = $this->conn->prepare(
+            "UPDATE ". $this->table .
+            " SET name = :name
+            WHERE id = :id"
+        );
+
+        try {
+            $result = $stmt->execute(array(
+               ":name"=> $name,
+               ":id" => $id 
+            ));
+
+            $_SESSION['message'] = 'Seller updated.';
+            $_SESSION['type'] = 'success';
+        } catch (Exception $e) {
+            $_SESSION['message'] = 'Not possible to update the seller.';
+            $_SESSION['type'] = 'danger';
+        }
+    }
+
 }

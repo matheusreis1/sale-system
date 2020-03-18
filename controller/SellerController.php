@@ -29,6 +29,23 @@ class SellerController {
         }
     }
 
+    public function edit() {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+
+            if (isset($_POST['seller'])) {
+                $seller = $_POST['seller'];
+
+                $this->database->update($id, $seller);
+                header('location: index.php');
+            } else {
+                $this->seller = $this->database->find($id);
+            }
+        } else {
+            header('location: index.php');
+        }
+    }
+
     public function view($id = null) {
         $this->seller = $this->database->find($id);
     }
