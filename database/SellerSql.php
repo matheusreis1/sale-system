@@ -19,7 +19,17 @@ class SellerSql extends PDO {
 
         try {
             if ($id) {
-                
+                $stmt = $this->conn->prepare(
+                    "SELECT * FROM " . $this->table . 
+                    " WHERE id = :id"
+                );
+                $stmt->bindParam('id', $id);
+
+                $result = $stmt->execute();
+
+                if ($result) {
+                    $found = $stmt->fetch(PDO::FETCH_ASSOC);
+                }
             } else {
                 $stmt = $this->conn->prepare(
                     "SELECT * FROM ". $this->table
