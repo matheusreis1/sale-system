@@ -70,4 +70,9 @@ class ProductSql extends PDO {
             $_SESSION['type'] = 'danger';
         }
     }
+
+    public function update(Product $product) {
+        var_dump($product->getId());
+        die;
+    }
 }

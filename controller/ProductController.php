@@ -7,6 +7,7 @@ include_once BASEURL."/database/ProductSql.php";
 class ProductController {
 
     public $products;
+    public $product;
     private $database;
 
     public function __construct() {
@@ -36,7 +37,7 @@ class ProductController {
     }
 
     public function view($id = null) {
-
+        $this->product = $this->database->find($id);
     }
 
     public function delete($id = null) {
