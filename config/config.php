@@ -27,6 +27,9 @@ if ( !defined('BASEURL') )
 if ( !defined('STYLEPATH') )
     define('STYLEPATH', dirname(__FILE__, 2) . '/public/');
 
+if ( !defined('BASEPATH') )
+    define('BASEPATH', '/sale-system/public/');
+
 define('HEADER_TEMPLATE', STYLEPATH . 'include/header.php');
 define('FOOTER_TEMPLATE', STYLEPATH . 'include/footer.php');
 

@@ -70,7 +70,7 @@ $products = $productController->products;
 						<i class="fa fa-pencil"></i>
 						Edit
 					</a>
-					<a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal" data-usuario="<?php echo $product['id']; ?>">
+					<a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal" data-product="<?php echo $product['id']; ?>">
 						<i class="fa fa-trash"></i> Excluir
 					</a>
 				</td>

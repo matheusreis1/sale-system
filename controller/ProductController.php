@@ -54,6 +54,7 @@ class ProductController {
     }
 
     public function delete($id = null) {
-
+        $this->product = $this->database->remove($id);
+        header('location: index.php');
     }
 }

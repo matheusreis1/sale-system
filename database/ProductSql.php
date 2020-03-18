@@ -97,4 +97,23 @@ class ProductSql extends PDO {
             $_SESSION['type'] = 'danger';
         }
     }
+
+    public function remove($id) {
+        try {
+            $stmt = $this->conn->prepare(
+                "DELETE FROM ". $this->table ." WHERE id = :id"
+            );
+            $stmt->bindParam(':id', $id);
+
+            $result = $stmt->execute();
+
+            if ($result) {
+                $_SESSION['message'] = 'Product deleted.';
+                $_SESSION['type'] = 'success';
+            }
+        } catch(Exception $e) {
+            $_SESSION['message'] = 'Not possible to delete this product.';
+            $_SESSION['type'] = 'danger';
+        }
+    }
 }
