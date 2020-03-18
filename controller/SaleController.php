@@ -6,6 +6,7 @@ require_once BASEURL."/database/SaleSql.php";
 class SaleController {
 
     public $sales;
+    public $sale;
     private $database;
 
     public function __construct() {
@@ -15,6 +16,10 @@ class SaleController {
 
     public function list() {
         return $this->database->find();
+    }
+
+    public function view($id) {
+        $this->sale = $this->database->find($id);
     }
 
 }

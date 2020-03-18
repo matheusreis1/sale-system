@@ -19,7 +19,19 @@ class SaleSql extends PDO {
 
         try {
             if ($id) {
+                $stmt = $this->conn->prepare(
+                    "SELECT sale.*, product.name as product_name, seller.name as seller_name 
+                    FROM sale 
+                    INNER JOIN product ON (product.id = sale.product_id) 
+                    INNER JOIN seller ON (seller.id = sale.seller_id) 
+                    WHERE sale.id = :id"
+                );
+                $stmt->bindParam(':id', $id);
+                $result = $stmt->execute();
 
+                if ($result) {
+                    $found = $stmt->fetch(PDO::FETCH_ASSOC);
+                }
             } else {
                 $stmt = $this->conn->prepare(
                     "SELECT sale.*, product.name as product_name, seller.name as seller_name 

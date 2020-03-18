@@ -47,6 +47,7 @@ $sales = $saleController->sales;
 			<th>ID</th>
 			<th width="30%">Product</th>
 			<th width="30%">Seller</th>
+			<th>Date</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -58,6 +59,7 @@ $sales = $saleController->sales;
 				<td><?php echo $sale['id']; ?></td>
 				<td><?php echo $sale['product_name']; ?></td>
 				<td><?php echo $sale['seller_name']; ?></td>
+				<td><?php echo $sale['sale_time']; ?></td>
 
 				<td class="actions text-right">
 					<a href="view.php?id=<?php echo $sale['id']; ?>" class="btn btn-sm btn-success">
