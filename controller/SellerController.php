@@ -50,4 +50,9 @@ class SellerController {
         $this->seller = $this->database->find($id);
     }
 
+    public function delete($id) {
+        $this->product = $this->database->remove($id);
+        header('location: index.php');
+    }
+
 }

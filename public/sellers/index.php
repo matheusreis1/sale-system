@@ -67,7 +67,7 @@ $sellers = $sellerController->sellers;
 						Edit
 					</a>
 					<a href="#" class="btn btn-sm btn-danger" data-toggle="modal" 
-                        data-target="#delete-modal" data-item="<?php echo $product['id']; ?>" 
+                        data-target="#delete-modal" data-item="<?php echo $seller['id']; ?>" 
                         data-title="Seller">
 						<i class="fa fa-trash"></i> Excluir
 					</a>

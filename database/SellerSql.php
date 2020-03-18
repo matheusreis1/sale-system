@@ -92,4 +92,24 @@ class SellerSql extends PDO {
         }
     }
 
+    public function remove($id) {
+        try {
+            $stmt = $this->conn->prepare(
+                "DELETE FROM ". $this->table .
+                " WHERE id = :id"
+            );
+            $stmt->bindParam(':id', $id);
+
+            $result = $stmt->execute();
+
+            if ($result) {
+                $_SESSION['message'] = 'Seller deleted.';
+                $_SESSION['type'] = 'success';
+            }
+        } catch (Exception $e) {
+            $_SESSION['message'] = 'Not possible to delete this seller.';
+            $_SESSION['type'] = 'danger';
+        }
+    }
+
 }
