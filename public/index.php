@@ -2,7 +2,7 @@
 
 require_once "../config/config.php";
 include(HEADER_TEMPLATE);
- 
+
 ?>
 
 <h1>

@@ -1,7 +1,7 @@
 <?php
 
-include_once ABSPATH."database.php";
-include_once BASEURL."/model/Product.php";
+require_once ABSPATH."database.php";
+require_once BASEURL."/model/Product.php";
 
 class ProductSql extends PDO {
 

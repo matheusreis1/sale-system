@@ -1,6 +1,6 @@
 <?php
 
-header('location: public/index.php'); 
+header('location: public/'); 
 exit();
- 
+
 ?>

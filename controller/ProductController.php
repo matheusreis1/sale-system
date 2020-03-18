@@ -1,8 +1,7 @@
 <?php
 
-require_once(ABSPATH.'config.php');
-include_once BASEURL."/model/Product.php";
-include_once BASEURL."/database/ProductSql.php";
+require_once BASEURL."/model/Product.php";
+require_once BASEURL."/database/ProductSql.php";
 
 class ProductController {
 
