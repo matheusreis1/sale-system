@@ -18,6 +18,17 @@ class SellerController {
         return $this->database->find();
     }
 
+    public function add() {
+        if (!empty($_POST['seller'])) {
+            $name = $_POST['seller']["'name'"];
+
+            $seller = new Seller($name);
+
+            $this->database->save($seller);
+            header('location: index.php');
+        }
+    }
+
     public function view($id = null) {
         $this->seller = $this->database->find($id);
     }

@@ -48,4 +48,25 @@ class SellerSql extends PDO {
         return $found;
     }
 
+    public function save(Seller $seller) {
+        $name = $seller->getName();
+
+        $stmt = $this->conn->prepare(
+            "INSERT INTO ". $this->table .
+            "(name) VALUES (:name)"
+        );
+
+        try {
+            $stmt->execute(array(
+                ":name" => $name
+            ));
+    
+            $_SESSION['message'] = 'Seller added.';
+            $_SESSION['type'] = 'success';
+        } catch (Exception $e) {
+            $_SESSION['message'] = 'Not possible to add the seller.';
+            $_SESSION['type'] = 'danger';
+        }
+    }
+
 }
