@@ -7,10 +7,9 @@ class Sale {
     private $product_id;
     private $sale_time;
 
-    public function __construct($seller_id, $product_id, $sale_time) {
+    public function __construct($seller_id, $product_id) {
         $this->seller_id = $seller_id;
         $this->product_id = $product_id;
-        $this->sale_time = $sale_time;
     }
 
     public function getId() {

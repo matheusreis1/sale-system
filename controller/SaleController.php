@@ -18,6 +18,18 @@ class SaleController {
         return $this->database->find();
     }
 
+    public function add() {
+        if(!empty($_POST['product_id']) && !empty($_POST['seller_id'])) {
+            $product_id = $_POST['product_id'];
+            $seller_id = $_POST['seller_id'];
+
+            $sale = new Sale($product_id, $seller_id);
+
+            $this->database->save($sale);
+            header('location: index.php');
+        }
+    }
+
     public function view($id) {
         $this->sale = $this->database->find($id);
     }

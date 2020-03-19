@@ -51,6 +51,30 @@ class SaleSql extends PDO {
         }
 
         return $found;
-    } 
+    }
+
+    public function save(Sale $sale) {
+        $seller_id = $sale->getSellerId();
+        $product_id = $sale->getProductId();
+
+        $stmt = $this->conn->prepare(
+            "INSERT INTO ". $this->table . "(seller_id, product_id) VALUES (:seller_id, :product_id)"
+        );
+
+        try {
+            $result = $stmt->execute(array(
+                ':seller_id' => $seller_id,
+                ':product_id' => $product_id
+            ));
+
+            if ($result) {
+                $_SESSION['message'] = 'Sale added.';
+                $_SESSION['type'] = 'success';
+            }
+        } catch (Exception $e) {
+            $_SESSION['message'] = 'Not possible to add the sale.';
+            $_SESSION['type'] = 'danger';
+        }
+    }
 
 }
