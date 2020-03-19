@@ -12,7 +12,7 @@ include(HEADER_TEMPLATE);
 
 <div class="row">
     <div class="col-xs-6 col-sm-3 col-md-2">
-        <a href="public/sales/add.php" class="btn btn-primary">
+        <a href="sales/add.php" class="btn btn-primary">
             <div class="row">
                 <div class="col-xs-12 text-center">
                     <i class="fa fa-plus fa-5x"></i>
