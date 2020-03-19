@@ -71,8 +71,8 @@ $sales = $saleController->sales;
 						Edit
 					</a>
 					<a href="#" class="btn btn-sm btn-danger" data-toggle="modal" 
-                        data-target="#delete-modal" data-item="<?php echo $sale['id']; ?>"
-                        data-title="Sale">
+						data-target="#delete-modal" data-item="<?php echo $sale['id']; ?>"
+						data-title="Sale">
 						<i class="fa fa-trash"></i> Delete
 					</a>
 				</td>
@@ -86,5 +86,7 @@ $sales = $saleController->sales;
 	<?php endif; ?>
 	</tbody>
 </table>
+
+<?php include('modal.php') ?>
 
 <?php include(FOOTER_TEMPLATE); ?>

@@ -49,4 +49,9 @@ class SaleController {
         $this->sale = $this->database->find($id);
     }
 
+    public function delete($id) {
+        $this->sale = $this->database->remove($id);
+        header('location: index.php');
+    }
+
 }

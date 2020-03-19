@@ -104,4 +104,26 @@ class SaleSql extends PDO {
         }
     }
 
+    public function remove($id) {
+        try {
+            if ($id) {
+                $stmt = $this->conn->prepare(
+                    "DELETE FROM ". $this->table .
+                    " WHERE id = :id"
+                );
+                $stmt->bindParam(":id", $id);
+
+                $result = $stmt->execute();
+
+                if ($result) {
+                    $_SESSION['message'] = 'Sale deleted.';
+                    $_SESSION['type'] = 'success';
+                }
+            }
+        } catch (Exception $e) {
+            $_SESSION['message'] = $e->GetMessage();
+            $_SESSION['type'] = 'danger';
+        }
+    }
+
 }
