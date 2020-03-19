@@ -30,6 +30,21 @@ class SaleController {
         }
     }
 
+    public function edit() {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+
+            if (isset($_POST['product_id']) && isset($_POST['seller_id'])) {
+                $this->database->update($id, $_POST);
+                header('location: index.php');
+            } else {
+                $this->sale = $this->database->find($id);
+            }
+        } else {
+            header('location: index.php');
+        }
+    }
+
     public function view($id) {
         $this->sale = $this->database->find($id);
     }

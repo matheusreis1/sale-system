@@ -5,8 +5,11 @@ include_once BASEURL."controller/SaleController.php";
 include_once BASEURL."controller/SellerController.php";
 include_once BASEURL."controller/ProductController.php";
 
+$id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: Missing ID.');
+
 $saleController = new SaleController();
-$saleController->add();
+$saleController->edit();
+$sale = $saleController->sale;
 
 $sellerController = new SellerController();
 $sellers = $sellerController->sellers;
@@ -20,7 +23,7 @@ $products = $productController->products;
 
 <h2>New Sale</h2>
 
-<form action="add.php" method="post">
+<form action="edit.php?id=<?php echo $id; ?>" method="post">
     <hr/>
     <div class="row">
 
@@ -29,7 +32,11 @@ $products = $productController->products;
             <?php
                 echo "<select class='form-control' name='product_id'>";
                 foreach ($products as $product) {
-                    echo "<option value='{$product['id']}'>{$product['name']}</option>";
+                    if ($sale['product_id'] === $product['id']) {
+                        echo "<option value='{$product['id']}' selected='true'>{$product['name']}</option>";
+                    } else {
+                        echo "<option value='{$product['id']}'>{$product['name']}</option>";
+                    }
                 }
                 echo "</select>";
             ?>
@@ -40,7 +47,11 @@ $products = $productController->products;
             <?php
                 echo "<select class='form-control' name='seller_id'>";
                 foreach ($sellers as $seller) {
-                    echo "<option value='{$seller['id']}'>{$seller['name']}</option>";
+                    if ($sale['seller_id'] === $seller['id']) {
+                        echo "<option value='{$seller['id']}' selected='true'>{$seller['name']}</option>";
+                    } else {
+                        echo "<option value='{$seller['id']}'>{$seller['name']}</option>";
+                    }
                 }
                 echo "</select>";
             ?>

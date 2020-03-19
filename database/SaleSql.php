@@ -77,4 +77,31 @@ class SaleSql extends PDO {
         }
     }
 
+    public function update($id, $sale) {
+        $seller_id = $sale["seller_id"];
+        $product_id = $sale["product_id"];
+        
+        $stmt = $this->conn->prepare(
+            "UPDATE ". $this->table .
+            " SET seller_id = :seller_id, product_id = :product_id
+            WHERE id = :id"
+        );
+
+        try {
+            $result = $stmt->execute(array(
+                ":id" => $id,
+                ":seller_id" => $seller_id,
+                ":product_id" => $product_id
+            ));
+
+            if ($result) {
+                $_SESSION['message'] = 'Sale updated.';
+                $_SESSION['type'] = 'success';
+            }
+        } catch (Exception $e) {
+            $_SESSION['message'] = 'Not possible to update the sale.';
+            $_SESSION['type'] = 'danger';
+        }
+    }
+
 }
