@@ -1,9 +1,9 @@
 </main> <!-- /container -->
+    <!-- jQuery library -->
+    <script src="<?php echo STYLEPATH; ?>libs/jquery-3.1.1.js"></script>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="<?php echo BASEPATH; ?>js/jquery-1.11.2.min.js"><\/script>')</script>
-
-    <script src="<?php echo BASEPATH; ?>include/js/bootstrap.min.js"></script>
+    <!-- bootstrap JavaScript -->
+    <script src="<?php echo STYLEPATH; ?>libs/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
     <script src="<?php echo BASEPATH; ?>include/js/main.js"></script>
 

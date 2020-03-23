@@ -30,6 +30,9 @@ if ( !defined('PUBLICPATH') )
 if ( !defined('BASEPATH') )
     define('BASEPATH', '/sale-system/public/');
 
+if ( !defined('STYLEPATH') )
+    define('STYLEPATH', '/sale-system/');
+
 define('HEADER_TEMPLATE', PUBLICPATH . 'include/header.php');
 define('FOOTER_TEMPLATE', PUBLICPATH . 'include/footer.php');
 
