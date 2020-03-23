@@ -2,6 +2,7 @@
 
 require_once ABSPATH."database.php";
 require_once BASEURL."/model/Sale.php";
+require_once "Database.php";
 
 class SaleSql extends PDO {
 
@@ -9,45 +10,29 @@ class SaleSql extends PDO {
     private $table;
 
     public function __construct() {
-        $database = new Database();
+        $database = new DatabaseConnection();
         $this->conn = $database->getConnection();
         $this->table = 'sale';
+        $this->database = new Database($this->table);
     }
 
     public function find($id = null) {
         $found = null;
 
-        try {
-            if ($id) {
-                $stmt = $this->conn->prepare(
-                    "SELECT sale.*, product.name as product_name, seller.name as seller_name, DATE_FORMAT(sale.sale_time,'%d/%m/%Y') AS sale_time 
-                    FROM sale 
-                    INNER JOIN product ON (product.id = sale.product_id) 
-                    INNER JOIN seller ON (seller.id = sale.seller_id) 
-                    WHERE sale.id = :id"
-                );
-                $stmt->bindParam(':id', $id);
-                $result = $stmt->execute();
-
-                if ($result) {
-                    $found = $stmt->fetch(PDO::FETCH_ASSOC);
-                }
-            } else {
-                $stmt = $this->conn->prepare(
-                    "SELECT sale.*, product.name as product_name, seller.name as seller_name, DATE_FORMAT(sale.sale_time,'%d/%m/%Y') AS sale_time 
-                    FROM sale 
-                    INNER JOIN product ON (product.id = sale.product_id) 
-                    INNER JOIN seller ON (seller.id = sale.seller_id)"
-                );
-                $result = $stmt->execute();
-
-                if ($result) {
-                    $found = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                }
-            }
-        } catch (Exception $e) {
-            $_SESSION['message'] = $e->GetMessage();
-            $_SESSION['type'] = 'danger';
+        if ($id) {
+            $found = $this->database->find(
+                "SELECT sale.*, product.name as product_name, seller.name as seller_name, DATE_FORMAT(sale.sale_time,'%d/%m/%Y') AS sale_time 
+                FROM sale 
+                INNER JOIN product ON (product.id = sale.product_id) 
+                INNER JOIN seller ON (seller.id = sale.seller_id)", $id
+            );
+        } else {
+            $found = $this->database->find(
+                "SELECT sale.*, product.name as product_name, seller.name as seller_name, DATE_FORMAT(sale.sale_time,'%d/%m/%Y') AS sale_time 
+                FROM sale 
+                INNER JOIN product ON (product.id = sale.product_id) 
+                INNER JOIN seller ON (seller.id = sale.seller_id)"
+            );
         }
 
         return $found;
@@ -105,23 +90,13 @@ class SaleSql extends PDO {
     }
 
     public function remove($id) {
-        try {
-            if ($id) {
-                $stmt = $this->conn->prepare(
-                    "DELETE FROM ". $this->table .
-                    " WHERE id = :id"
-                );
-                $stmt->bindParam(":id", $id);
+        $result = $this->database->remove($this->table, $id);
 
-                $result = $stmt->execute();
-
-                if ($result) {
-                    $_SESSION['message'] = 'Sale deleted.';
-                    $_SESSION['type'] = 'success';
-                }
-            }
-        } catch (Exception $e) {
-            $_SESSION['message'] = $e->GetMessage();
+        if ($result) {
+            $_SESSION['message'] = 'Sale deleted.';
+            $_SESSION['type'] = 'success';
+        } else {
+            $_SESSION['message'] = 'Not possible to delete this sale.';
             $_SESSION['type'] = 'danger';
         }
     }

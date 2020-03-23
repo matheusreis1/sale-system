@@ -2,44 +2,28 @@
 
 require_once ABSPATH."database.php";
 require_once BASEURL."/model/Product.php";
+require_once "Database.php";
 
 class ProductSql extends PDO {
 
     private $conn;
     private $table;
+    private $database;
 
     public function __construct() {
-        $database = new Database();
+        $database = new DatabaseConnection();
         $this->conn = $database->getConnection();
         $this->table = 'product';
+        $this->database = new Database('product');
     }
 
     public function find($id = null) {
         $found = null;
 
-        try {
-            if ($id) {
-                $stmt = $this->conn->prepare("SELECT * FROM " . $this->table . " WHERE id = :id");
-
-                $result = $stmt->execute(array(
-                    ":id" => $id
-                ));
-
-                if ($result) {
-                    $found = $stmt->fetch(PDO::FETCH_ASSOC);
-                }
-    
-            } else {
-                $stmt = $this->conn->prepare("SELECT * FROM " . $this->table);
-                $result = $stmt->execute();
-
-                if ($result) {
-                    $found = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                }
-            }
-        } catch (Exception $e) {
-            $_SESSION['message'] = $e->GetMessage();
-            $_SESSION['type'] = 'danger';
+        if ($id) {
+            $found = $this->database->find("SELECT * FROM product", $id);
+        } else {
+            $found = $this->database->find("SELECT * FROM product");
         }
 
         return $found;
@@ -99,19 +83,12 @@ class ProductSql extends PDO {
     }
 
     public function remove($id) {
-        try {
-            $stmt = $this->conn->prepare(
-                "DELETE FROM ". $this->table ." WHERE id = :id"
-            );
-            $stmt->bindParam(':id', $id);
+        $result = $this->database->remove($this->table, $id);
 
-            $result = $stmt->execute();
-
-            if ($result) {
-                $_SESSION['message'] = 'Product deleted.';
-                $_SESSION['type'] = 'success';
-            }
-        } catch(Exception $e) {
+        if ($result) {
+            $_SESSION['message'] = 'Product deleted.';
+            $_SESSION['type'] = 'success';
+        } else {
             $_SESSION['message'] = 'Not possible to delete this product.';
             $_SESSION['type'] = 'danger';
         }
