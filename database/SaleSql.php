@@ -20,7 +20,7 @@ class SaleSql extends PDO {
         try {
             if ($id) {
                 $stmt = $this->conn->prepare(
-                    "SELECT sale.*, product.name as product_name, seller.name as seller_name 
+                    "SELECT sale.*, product.name as product_name, seller.name as seller_name, DATE_FORMAT(sale.sale_time,'%d/%m/%Y') AS sale_time 
                     FROM sale 
                     INNER JOIN product ON (product.id = sale.product_id) 
                     INNER JOIN seller ON (seller.id = sale.seller_id) 
@@ -34,7 +34,7 @@ class SaleSql extends PDO {
                 }
             } else {
                 $stmt = $this->conn->prepare(
-                    "SELECT sale.*, product.name as product_name, seller.name as seller_name 
+                    "SELECT sale.*, product.name as product_name, seller.name as seller_name, DATE_FORMAT(sale.sale_time,'%d/%m/%Y') AS sale_time 
                     FROM sale 
                     INNER JOIN product ON (product.id = sale.product_id) 
                     INNER JOIN seller ON (seller.id = sale.seller_id)"
