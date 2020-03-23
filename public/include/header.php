@@ -33,14 +33,22 @@
           <ul class="nav navbar-nav">          
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    People
+                    Sellers
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="<?php echo BASEPATH;?>sellers">Manage Sellers</a></li>
+                    <li><a href="<?php echo BASEPATH;?>sellers/add.php">New Seller</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    Products
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="<?php echo BASEPATH;?>products">Manage Products</a></li>
                     <li><a href="<?php echo BASEPATH;?>products/add.php">New Product</a></li>
-                    <li><a href="<?php echo BASEPATH;?>sellers">Manage Sellers</a></li>
-                    <li><a href="<?php echo BASEPATH;?>sellers/add.php">New Seller</a></li>
                 </ul>
             </li>
           </ul>
