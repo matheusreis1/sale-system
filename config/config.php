@@ -24,13 +24,13 @@ if ( !defined('ABSPATH') )
 if ( !defined('BASEURL') )
     define('BASEURL', dirname(__FILE__, 2) . '/');
     
-if ( !defined('STYLEPATH') )
-    define('STYLEPATH', dirname(__FILE__, 2) . '/public/');
+if ( !defined('PUBLICPATH') )
+    define('PUBLICPATH', dirname(__FILE__, 2) . '/public/');
 
 if ( !defined('BASEPATH') )
     define('BASEPATH', '/sale-system/public/');
 
-define('HEADER_TEMPLATE', STYLEPATH . 'include/header.php');
-define('FOOTER_TEMPLATE', STYLEPATH . 'include/footer.php');
+define('HEADER_TEMPLATE', PUBLICPATH . 'include/header.php');
+define('FOOTER_TEMPLATE', PUBLICPATH . 'include/footer.php');
 
 ?>

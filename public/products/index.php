@@ -87,6 +87,6 @@ $products = $productController->products;
 	</tbody>
 </table>
 
-<?php include(STYLEPATH."include/delete_modal.php"); ?>
+<?php include(PUBLICPATH."include/delete_modal.php"); ?>
 
 <?php include(FOOTER_TEMPLATE); ?>

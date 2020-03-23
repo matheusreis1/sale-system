@@ -12,8 +12,8 @@
                 Are you sure?
             </div>
             <div class="modal-footer">
-                <a id="confirm" class="btn btn-primary">Yes</a>
                 <a id="cancel" class="btn btn-default" data-dismiss="modal">No</a>
+                <a id="confirm" class="btn btn-primary">Yes</a>
             </div>
         </div>
     </div>
