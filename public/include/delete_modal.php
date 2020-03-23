@@ -9,7 +9,7 @@
             </div>
 
             <div class="modal-body">
-                Delete this?
+                Are you sure?
             </div>
             <div class="modal-footer">
                 <a id="confirm" class="btn btn-primary">Yes</a>

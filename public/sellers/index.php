@@ -83,6 +83,6 @@ $sellers = $sellerController->sellers;
 	</tbody>
 </table>
 
-<?php include('modal.php'); ?>
+<?php include(STYLEPATH."include/delete_modal.php"); ?>
 
 <?php include(FOOTER_TEMPLATE); ?>
