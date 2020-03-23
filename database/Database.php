@@ -56,7 +56,8 @@ class Database extends PDO {
 
         try {
             $stmt = $this->conn->prepare(
-                "DELETE FROM ". $table ." WHERE id = :id"
+                "DELETE FROM ". $table ."
+                 WHERE ".$this->table.".id = :id"
             );
             $stmt->bindParam(':id', $id);
 
