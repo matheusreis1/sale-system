@@ -1,7 +1,7 @@
 <?php
 
 require_once "../../config/config.php";
-require_once BASEURL."controller/SellerController.php";
+use controller\SellerController;
 
 $sellerController = new SellerController();
 
