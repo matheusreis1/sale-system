@@ -7,3 +7,7 @@ $('#delete-modal').on('show.bs.modal', function (event) {
     modal.find('.modal-title').text('Delete '+title+' #' + id);
     modal.find('#confirm').attr('href', 'delete.php?id=' + id);
 })
+
+function back() {
+    window.history.back();
+}

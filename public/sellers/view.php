@@ -27,7 +27,7 @@ $seller = $sellerController->seller;
 <div id="actions" class="row">
 	<div class="col-md-12">
 	  <a href="edit.php?id=<?php echo $seller['id']; ?>" class="btn btn-primary">Edit</a>
-	  <a href="index.php" class="btn btn-default">Back</a>
+	  <a onclick="back()" class="btn btn-default">Back</a>
 	</div>
 </div>
 

@@ -52,7 +52,7 @@ $products = $productController->products;
 
         <div class="col-md-12">
             <button type="submit" class="btn btn-primary">Save</button>
-            <a href="index.php" class="btn btn-default">Cancel</a>
+            <a onclick="back()" class="btn btn-default">Cancel</a>
         </div>
 
     </div>
