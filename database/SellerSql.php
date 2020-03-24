@@ -2,6 +2,7 @@
 
 require_once ABSPATH."database.php";
 require_once BASEURL."model/Seller.php";
+require_once "Database.php";
 
 class SellerSql extends PDO {
 
@@ -9,40 +10,19 @@ class SellerSql extends PDO {
     private $table;
 
     public function __construct() {
-        $database = new Database;
+        $database = new DatabaseConnection();
         $this->conn = $database->getConnection();
         $this->table = 'seller';
+        $this->database = new Database($this->table);
     }
 
     public function find($id = null) {
         $found = null;
 
-        try {
-            if ($id) {
-                $stmt = $this->conn->prepare(
-                    "SELECT * FROM " . $this->table . 
-                    " WHERE id = :id"
-                );
-                $stmt->bindParam('id', $id);
-
-                $result = $stmt->execute();
-
-                if ($result) {
-                    $found = $stmt->fetch(PDO::FETCH_ASSOC);
-                }
-            } else {
-                $stmt = $this->conn->prepare(
-                    "SELECT * FROM ". $this->table
-                );
-                $result = $stmt->execute();
-
-                if ($result) {
-                    $found = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                }
-            }
-        } catch (Exception $e) {
-            $_SESSION['message'] = $e->GetMessage();
-            $_SESSION['type'] = 'danger';
+        if ($id) {
+            $found = $this->database->find("SELECT * FROM $this->table", $id);
+        } else {
+            $found = $this->database->find("SELECT * FROM $this->table");
         }
 
         return $found;
@@ -93,20 +73,12 @@ class SellerSql extends PDO {
     }
 
     public function remove($id) {
-        try {
-            $stmt = $this->conn->prepare(
-                "DELETE FROM ". $this->table .
-                " WHERE id = :id"
-            );
-            $stmt->bindParam(':id', $id);
+        $result = $this->database->remove($this->table, $id);
 
-            $result = $stmt->execute();
-
-            if ($result) {
-                $_SESSION['message'] = 'Seller deleted.';
-                $_SESSION['type'] = 'success';
-            }
-        } catch (Exception $e) {
+        if ($result) {
+            $_SESSION['message'] = 'Seller deleted.';
+            $_SESSION['type'] = 'success';
+        } else {
             $_SESSION['message'] = 'Not possible to delete this seller.';
             $_SESSION['type'] = 'danger';
         }

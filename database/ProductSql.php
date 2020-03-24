@@ -14,7 +14,7 @@ class ProductSql extends PDO {
         $database = new DatabaseConnection();
         $this->conn = $database->getConnection();
         $this->table = 'product';
-        $this->database = new Database('product');
+        $this->database = new Database($this->table);
     }
 
     public function find($id = null) {
