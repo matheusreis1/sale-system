@@ -29,21 +29,14 @@ class SellerSql extends PDO {
     }
 
     public function save(Seller $seller) {
-        $name = $seller->getName();
+        $sellerArray = $seller->toArray($seller);
 
-        $stmt = $this->conn->prepare(
-            "INSERT INTO ". $this->table .
-            "(name) VALUES (:name)"
-        );
+        $result = $this->database->save($sellerArray);
 
-        try {
-            $stmt->execute(array(
-                ":name" => $name
-            ));
-    
+        if ($result) {
             $_SESSION['message'] = 'Seller added.';
             $_SESSION['type'] = 'success';
-        } catch (Exception $e) {
+        } else {
             $_SESSION['message'] = 'Not possible to add the seller.';
             $_SESSION['type'] = 'danger';
         }

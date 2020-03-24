@@ -1,9 +1,11 @@
 <?php
 
-class Seller {
+require "Model.php";
+
+class Seller extends Model {
 
     private $id;
-    private $name;
+    protected $name;
 
     public function __construct($name) {
         $this->name = $name;

@@ -51,6 +51,38 @@ class Database extends PDO {
         return $found;
     }
 
+    public function save($data) {
+        $result = false;
+        $columns = null;
+        $values = null;
+
+        foreach ($data as $key => $value) {
+            $columns .= "$key,";
+            $values .= ":$key,";
+        }
+
+        $columns = rtrim($columns, ',');
+        $values = rtrim($values, ',');
+ 
+        $stmt = $this->conn->prepare(
+            "INSERT INTO ". $this->table .
+            "($columns) VALUES ($values)"
+        );
+
+        foreach ($data as $key => $value) {
+            $stmt->bindParam(":$key", $value);
+        }
+
+        try {
+            $result = $stmt->execute();
+            
+        } catch (Exception $e) {
+            $result = false;
+        }
+
+        return $result;
+    }
+
     public function remove($table, $id) {
         $result = false;
 
