@@ -1,11 +1,13 @@
 <?php
 
-class Product {
+require "Model.php";
+
+class Product extends Model {
 
     private $id;
-    private $name;
-    private $description;
-    private $price;
+    protected $name;
+    protected $description;
+    protected $price;
 
     public function __construct($name, $description, $price) {
         $this->name = $name;
