@@ -3,11 +3,11 @@
 namespace model;
 use model\Model;
 
-class Sale {
+class Sale extends Model {
 
     private $id;
-    private $seller_id;
-    private $product_id;
+    protected $seller_id;
+    protected $product_id;
     private $sale_time;
 
     public function __construct($seller_id, $product_id) {
@@ -24,7 +24,7 @@ class Sale {
     }
 
     public function getSellerId() {
-        return $this->seller_id;
+        return intval($this->seller_id);
     }
 
     public function setSellerId($seller_id) {
@@ -32,7 +32,7 @@ class Sale {
     }
 
     public function getProductId() {
-        return $this->product_id;
+        return intval($this->product_id);
     }
 
     public function setProductId($product_id) {
@@ -47,4 +47,16 @@ class Sale {
         $this->sale_time = $sale_time;
     }
 
+    public function toArray($data) {
+        if (is_array($data) || is_object($data))
+        {
+            $result = array();
+            
+            $result['product_id'] = $this->getProductId();
+            $result['seller_id'] = $this->getSellerId();
+
+            return $result;
+        }
+        return $data;
+    }
 }

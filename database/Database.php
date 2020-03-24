@@ -56,27 +56,24 @@ class Database {
         $result = false;
         $columns = null;
         $values = null;
+        $paramArray = array();
 
         foreach ($data as $key => $value) {
             $columns .= "$key,";
-            $values .= ":$key,";
+            $values .= "?,";
+            array_push($paramArray, $value);
         }
 
         $columns = rtrim($columns, ',');
         $values = rtrim($values, ',');
- 
+
         $stmt = $this->conn->prepare(
             "INSERT INTO ". $this->table .
             "($columns) VALUES ($values)"
         );
 
-        foreach ($data as $key => $value) {
-            $stmt->bindParam(":$key", $value);
-        }
-
         try {
-            $result = $stmt->execute();
-            
+            $result = $stmt->execute($paramArray);
         } catch (Exception $e) {
             $result = false;
         }

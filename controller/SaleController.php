@@ -22,10 +22,10 @@ class SaleController {
 
     public function add() {
         if(!empty($_POST['product_id']) && !empty($_POST['seller_id'])) {
-            $product_id = $_POST['product_id'];
             $seller_id = $_POST['seller_id'];
+            $product_id = $_POST['product_id'];
 
-            $sale = new Sale($product_id, $seller_id);
+            $sale = new Sale($seller_id, $product_id);
 
             $this->database->save($sale);
             header('location: index.php');

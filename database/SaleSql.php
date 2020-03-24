@@ -41,24 +41,14 @@ class SaleSql {
     }
 
     public function save(Sale $sale) {
-        $seller_id = $sale->getSellerId();
-        $product_id = $sale->getProductId();
+        $saleArray = $sale->toArray($sale);
 
-        $stmt = $this->conn->prepare(
-            "INSERT INTO ". $this->table . "(seller_id, product_id) VALUES (:seller_id, :product_id)"
-        );
+        $result = $this->database->save($saleArray);
 
-        try {
-            $result = $stmt->execute(array(
-                ':seller_id' => $seller_id,
-                ':product_id' => $product_id
-            ));
-
-            if ($result) {
-                $_SESSION['message'] = 'Sale added.';
-                $_SESSION['type'] = 'success';
-            }
-        } catch (Exception $e) {
+        if ($result) {
+            $_SESSION['message'] = 'Sale added.';
+            $_SESSION['type'] = 'success';
+        } else {
             $_SESSION['message'] = 'Not possible to add the sale.';
             $_SESSION['type'] = 'danger';
         }
