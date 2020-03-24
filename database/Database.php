@@ -1,8 +1,9 @@
 <?php
 
+namespace database;
 use config\DatabaseConnection;
 
-class Database extends PDO {
+class Database {
 
     private $conn;
     private $table;
@@ -29,7 +30,7 @@ class Database extends PDO {
                 ));
 
                 if ($result) {
-                    $found = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $found = $stmt->fetch(\PDO::FETCH_ASSOC);
                 }
     
             } else {
@@ -40,7 +41,7 @@ class Database extends PDO {
                 $result = $stmt->execute();
 
                 if ($result) {
-                    $found = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    $found = $stmt->fetchAll(\PDO::FETCH_ASSOC);
                 }
             }
         } catch (Exception $e) {

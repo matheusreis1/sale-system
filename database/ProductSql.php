@@ -1,11 +1,12 @@
 <?php
 
-require_once "Database.php";
+namespace database;
 
+use database\Database;
 use config\DatabaseConnection;
 use model\Product;
 
-class ProductSql extends PDO {
+class ProductSql {
 
     private $conn;
     private $table;

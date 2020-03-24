@@ -1,11 +1,12 @@
 <?php
 
-require_once "Database.php";
+namespace database;
 
+use database\Database;
 use config\DatabaseConnection;
 use model\Seller;
 
-class SellerSql extends PDO {
+class SellerSql {
 
     private $conn;
     private $table;
