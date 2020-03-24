@@ -1,6 +1,6 @@
 <?php
 
-require_once ABSPATH."database.php";
+use config\DatabaseConnection;
 
 class Database extends PDO {
 
