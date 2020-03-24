@@ -1,6 +1,7 @@
 <?php
 
-require "Model.php";
+namespace model;
+use model\Model;
 
 class Product extends Model {
 

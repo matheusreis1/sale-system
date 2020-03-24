@@ -1,7 +1,8 @@
 <?php
 
-require_once BASEURL."/model/Seller.php";
 require_once BASEURL."/database/SellerSql.php";
+
+use model\Seller;
 
 class SellerController {
 

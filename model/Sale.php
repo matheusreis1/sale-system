@@ -1,5 +1,8 @@
 <?php
 
+namespace model;
+use model\Model;
+
 class Sale {
 
     private $id;

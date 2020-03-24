@@ -1,5 +1,7 @@
 <?php
 
+namespace model;
+
 class Model {
 
     public function toArray($data) {

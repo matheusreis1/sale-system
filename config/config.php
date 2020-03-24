@@ -18,11 +18,14 @@ define('DB_PASSWORD', 'password');
 
 define('DB_HOST', 'localhost');
 
-if ( !defined('ABSPATH') )
-	define('ABSPATH', dirname(__FILE__) . '/');
+if ( !defined('DS') )
+    define('DS', DIRECTORY_SEPARATOR);
 
+if ( !defined('ABSPATH') )
+    define('ABSPATH', dirname(__FILE__) . DS);
+    
 if ( !defined('BASEURL') )
-    define('BASEURL', dirname(__FILE__, 2) . '/');
+    define('BASEURL', dirname(__FILE__, 2) . DS);
     
 if ( !defined('PUBLICPATH') )
     define('PUBLICPATH', dirname(__FILE__, 2) . '/public/');
@@ -35,5 +38,15 @@ if ( !defined('STYLEPATH') )
 
 define('HEADER_TEMPLATE', PUBLICPATH . 'include/header.php');
 define('FOOTER_TEMPLATE', PUBLICPATH . 'include/footer.php');
+
+function __autoload($class) {
+    $class = BASEURL . str_replace('\\', DS, $class) . '.php';
+
+    if (!file_exists($class)) {
+        throw new Exception("File path $class not found.");
+    }
+
+    require_once($class);
+}
 
 ?>
