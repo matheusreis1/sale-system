@@ -1,10 +1,12 @@
 <?php
 
-require_once ABSPATH."database.php";
-require_once BASEURL."/model/Sale.php";
-require_once "Database.php";
+namespace database;
 
-class SaleSql extends PDO {
+use database\Database;
+use config\DatabaseConnection;
+use model\Sale;
+
+class SaleSql {
 
     private $conn;
     private $table;

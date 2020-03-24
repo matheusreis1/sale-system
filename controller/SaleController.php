@@ -1,7 +1,7 @@
 <?php
 
-require_once BASEURL."/model/Sale.php";
-require_once BASEURL."/database/SaleSql.php";
+use database\SaleSql;
+use model\Sale;
 
 class SaleController {
 
