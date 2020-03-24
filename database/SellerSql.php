@@ -1,8 +1,8 @@
 <?php
 
-require_once ABSPATH."database.php";
 require_once "Database.php";
 
+use config\DatabaseConnection;
 use model\Seller;
 
 class SellerSql extends PDO {
