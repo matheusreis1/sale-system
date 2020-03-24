@@ -1,5 +1,7 @@
 <?php
 
+namespace controller;
+
 use database\SaleSql;
 use model\Sale;
 

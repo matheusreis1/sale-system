@@ -1,9 +1,9 @@
 <?php 
 
 require_once "../../config/config.php";
-include_once BASEURL."controller/SaleController.php";
-include_once BASEURL."controller/SellerController.php";
-include_once BASEURL."controller/ProductController.php";
+use controller\SaleController;
+use controller\SellerController;
+use controller\ProductController;
 
 $saleController = new SaleController();
 $saleController->add();
