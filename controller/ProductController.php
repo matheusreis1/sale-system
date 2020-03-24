@@ -1,5 +1,7 @@
 <?php
 
+namespace controller;
+
 use database\ProductSql;
 use model\Product;
 

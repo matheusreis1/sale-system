@@ -1,7 +1,7 @@
 <?php 
 
 require_once "../../config/config.php";
-require_once BASEURL."controller/ProductController.php";
+use controller\ProductController;
 
 $productController = new ProductController();
 $productController->add();
