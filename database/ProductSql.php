@@ -1,8 +1,9 @@
 <?php
 
 require_once ABSPATH."database.php";
-require_once BASEURL."/model/Product.php";
 require_once "Database.php";
+
+use model\Product;
 
 class ProductSql extends PDO {
 

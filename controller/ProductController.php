@@ -1,7 +1,8 @@
 <?php
 
-require_once BASEURL."/model/Product.php";
 require_once BASEURL."/database/ProductSql.php";
+
+use model\Product;
 
 class ProductController {
 
