@@ -46,27 +46,12 @@ class ProductSql {
     }
 
     public function update($id, $product) {
-        $name = $product["'name'"];
-        $price = $product["'price'"];
-        $description = $product["'description'"];
+        $result = $this->database->update($id, $product);
 
-        $stmt = $this->conn->prepare(
-            "UPDATE ". $this->table .
-            " SET name = :name, price = :price, description = :description
-            WHERE id = :id"
-        );
-
-        try {
-            $result = $stmt->execute(array(
-                ":id" => $id,
-                ":name" => $name,
-                ":price" => $price,
-                ":description" => $description
-            ));
-
+        if ($result) {
             $_SESSION['message'] = 'Product updated.';
             $_SESSION['type'] = 'success';
-        } catch(Exception $e) {
+        } else {
             $_SESSION['message'] = 'Not possible to update the product.';
             $_SESSION['type'] = 'danger';
         }

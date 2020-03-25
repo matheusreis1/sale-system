@@ -84,14 +84,12 @@ class Database {
     public function update($id, $data) {
         $result = false;
         $columns = null;
-        $values = null;
 
         foreach ($data as $key => $value) {
             $columns .= "$key=:$key,";
         }
 
         $columns = rtrim($columns, ',');
-        $values = rtrim($values, ',');
 
         $stmt = $this->conn->prepare(
             "UPDATE ". $this->table .

@@ -21,15 +21,15 @@ $product = $productController->product;
     <div class="row">
         <div class="form-group col-md-6">
             <label for="name">Name</label>
-            <input type="text" class="form-control" name="product['name']" value="<?php echo $product['name']; ?>" required="true">
+            <input type="text" class="form-control" name="product[name]" value="<?php echo $product['name']; ?>" required="true">
         </div>
         <div class="form-group col-md-6">
             <label for="price">Price</label>
-            <input type="number" class="form-control" name="product['price']" value="<?php echo $product['price']; ?>" required="true">
+            <input type="number" class="form-control" name="product[price]" value="<?php echo $product['price']; ?>" required="true">
         </div>
         <div class="form-group col-md-12">
             <label for="description">Description</label>
-            <textarea type="text" class="form-control" name="product['description']" required="true"><?php echo $product['description']; ?></textarea>
+            <textarea type="text" class="form-control" name="product[description]" required="true"><?php echo $product['description']; ?></textarea>
         </div>
     </div>
 
