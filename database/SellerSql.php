@@ -45,23 +45,12 @@ class SellerSql {
     }
 
     public function update($id, $seller) {
-        $name = $seller["'name'"];
+        $result = $this->database->update($id, $seller);
 
-        $stmt = $this->conn->prepare(
-            "UPDATE ". $this->table .
-            " SET name = :name
-            WHERE id = :id"
-        );
-
-        try {
-            $result = $stmt->execute(array(
-               ":name"=> $name,
-               ":id" => $id 
-            ));
-
+        if ($result) {
             $_SESSION['message'] = 'Seller updated.';
             $_SESSION['type'] = 'success';
-        } catch (Exception $e) {
+        } else {
             $_SESSION['message'] = 'Not possible to update the seller.';
             $_SESSION['type'] = 'danger';
         }

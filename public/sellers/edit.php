@@ -22,7 +22,7 @@ $seller = $sellerController->seller;
 
         <div class="form-group col-md-6">
             <label for="name">Name</label>
-            <input type="text" class="form-control" name="seller['name']" value="<?php echo $seller['name']; ?>" required="true">
+            <input type="text" class="form-control" name="seller[name]" value="<?php echo $seller['name']; ?>" required="true">
         </div>
 
     </div>
