@@ -21,7 +21,7 @@ $sellers = $sellerController->sellers;
                 <i class="fa fa-plus"></i>
                 New Seller
             </a>
-	    	<a class="btn btn-default" href="index.php">
+	    	<a class="btn btn-default" onclick="reload()">
                 <i class="fa fa-refresh"></i>
                 Refresh
             </a>

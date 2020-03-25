@@ -5,11 +5,6 @@ ini_set('display_errors', 1);
 
 session_start();
 
-function clear_messages() {
-    $_SESSION['message'] = "";
-    $_SESSION['type'] = "";
-}
-
 define('DB_NAME', 'sale_system');
 
 define('DB_USER', 'root');
@@ -20,9 +15,6 @@ define('DB_HOST', 'localhost');
 
 if ( !defined('DS') )
     define('DS', DIRECTORY_SEPARATOR);
-
-if ( !defined('ABSPATH') )
-    define('ABSPATH', dirname(__FILE__) . DS);
     
 if ( !defined('BASEURL') )
     define('BASEURL', dirname(__FILE__, 2) . DS);
@@ -47,6 +39,11 @@ function __autoload($class) {
     }
 
     require_once($class);
+}
+
+function clear_messages() {
+    $_SESSION['message'] = "";
+    $_SESSION['type'] = "";
 }
 
 ?>

@@ -11,3 +11,7 @@ $('#delete-modal').on('show.bs.modal', function (event) {
 function back() {
     window.history.back();
 }
+
+function reload() {
+    location.reload();
+}

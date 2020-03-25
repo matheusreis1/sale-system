@@ -21,7 +21,7 @@ $sales = $saleController->sales;
                 <i class="fa fa-plus"></i>
                 New Sale
             </a>
-	    	<a class="btn btn-default" href="index.php">
+	    	<a class="btn btn-default" onclick="reload()">
                 <i class="fa fa-refresh"></i>
                 Update
             </a>
