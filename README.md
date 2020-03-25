@@ -2,6 +2,10 @@
 
 System to manage sales.
 
+## Docker
+
+- To use docker environment, access: https://github.com/matheusreis1/sale-system-docker
+
 ## Requirements
 
 - PHP >= 7.2
