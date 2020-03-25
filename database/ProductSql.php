@@ -3,18 +3,14 @@
 namespace database;
 
 use database\Database;
-use config\DatabaseConnection;
 use model\Product;
 
 class ProductSql {
 
-    private $conn;
     private $table;
     private $database;
 
     public function __construct() {
-        $database = new DatabaseConnection();
-        $this->conn = $database->getConnection();
         $this->table = 'product';
         $this->database = new Database($this->table);
     }

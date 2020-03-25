@@ -3,17 +3,14 @@
 namespace database;
 
 use database\Database;
-use config\DatabaseConnection;
 use model\Seller;
 
 class SellerSql {
 
-    private $conn;
     private $table;
+    private $database;
 
     public function __construct() {
-        $database = new DatabaseConnection();
-        $this->conn = $database->getConnection();
         $this->table = 'seller';
         $this->database = new Database($this->table);
     }

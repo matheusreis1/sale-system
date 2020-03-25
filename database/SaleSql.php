@@ -3,17 +3,14 @@
 namespace database;
 
 use database\Database;
-use config\DatabaseConnection;
 use model\Sale;
 
 class SaleSql {
 
-    private $conn;
     private $table;
+    private $database;
 
     public function __construct() {
-        $database = new DatabaseConnection();
-        $this->conn = $database->getConnection();
         $this->table = 'sale';
         $this->database = new Database($this->table);
     }
