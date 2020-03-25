@@ -73,7 +73,7 @@ class ProductSql {
     }
 
     public function remove($id) {
-        $result = $this->database->remove($this->table, $id);
+        $result = $this->database->remove($id);
 
         if ($result) {
             $_SESSION['message'] = 'Product deleted.';

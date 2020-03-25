@@ -81,12 +81,40 @@ class Database {
         return $result;
     }
 
-    public function remove($table, $id) {
+    public function update($id, $data) {
+        $result = false;
+        $columns = null;
+        $values = null;
+
+        foreach ($data as $key => $value) {
+            $columns .= "$key=:$key,";
+        }
+
+        $columns = rtrim($columns, ',');
+        $values = rtrim($values, ',');
+
+        $stmt = $this->conn->prepare(
+            "UPDATE ". $this->table .
+            " SET $columns 
+            WHERE id = :id"
+        );
+        $data['id'] = $id;
+
+        try {
+            $result = $stmt->execute($data);
+        } catch (Exception $e) {
+            $result = false;
+        }
+
+        return $result;
+    }
+
+    public function remove($id) {
         $result = false;
 
         try {
             $stmt = $this->conn->prepare(
-                "DELETE FROM ". $table ."
+                "DELETE FROM ". $this->table ."
                  WHERE ".$this->table.".id = :id"
             );
             $stmt->bindParam(':id', $id);
