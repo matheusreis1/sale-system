@@ -28,7 +28,7 @@ include(HEADER_TEMPLATE);
         <a href="products" class="btn btn-default">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <i class="fa fa-user fa-5x"></i>
+                    <i class="fa fa-laptop fa-5x"></i>
                 </div>
                 <div class="col-xs-12 text-center">
                     <p>Products</p>
@@ -54,7 +54,7 @@ include(HEADER_TEMPLATE);
         <a href="sales" class="btn btn-default">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <i class="fa fa-user fa-5x"></i>
+                    <i class="fa fa-shopping-cart fa-5x"></i>
                 </div>
                 <div class="col-xs-12 text-center">
                     <p>Sales</p>
