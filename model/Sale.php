@@ -24,7 +24,7 @@ class Sale extends Model {
     }
 
     public function getSellerId() {
-        return intval($this->seller_id);
+        return $this->seller_id;
     }
 
     public function setSellerId($seller_id) {
@@ -32,7 +32,7 @@ class Sale extends Model {
     }
 
     public function getProductId() {
-        return intval($this->product_id);
+        return $this->product_id;
     }
 
     public function setProductId($product_id) {
@@ -45,18 +45,5 @@ class Sale extends Model {
 
     public function setSaleTime($sale_time) {
         $this->sale_time = $sale_time;
-    }
-
-    public function toArray($data) {
-        if (is_array($data) || is_object($data))
-        {
-            $result = array();
-            
-            $result['product_id'] = $this->getProductId();
-            $result['seller_id'] = $this->getSellerId();
-
-            return $result;
-        }
-        return $data;
     }
 }
